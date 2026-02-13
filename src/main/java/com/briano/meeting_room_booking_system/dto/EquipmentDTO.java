@@ -1,5 +1,7 @@
 package com.briano.meeting_room_booking_system.dto;
 
+import java.util.Set;
+
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -22,5 +24,7 @@ public class EquipmentDTO {
 	
 	@NotNull
 	private String description;
+	
+	private Set<RoomDTO> room;
 
 }

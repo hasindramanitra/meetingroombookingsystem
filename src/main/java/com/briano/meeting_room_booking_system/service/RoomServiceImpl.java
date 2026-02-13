@@ -59,10 +59,13 @@ public class RoomServiceImpl implements RoomService{
 		Room existingRoom = this.roomRepository.findById(id)
 				.orElseThrow(() -> new RoomNotFoundException(id));
 		
-		this.roomMapper.updateEntityFromDto(roomDTO, existingRoom);
-		Room updatedRoom = this.roomRepository.save(existingRoom);
+		//this.roomMapper.updateEntityFromDto(roomDTO, existingRoom);
+		Room updatedRoom = this.roomMapper.toEntity(roomDTO);
+		existingRoom.getEquipments().clear();
+		existingRoom.getEquipments().addAll(updatedRoom.getEquipments());
+		Room updatedSuccessFullRoom = this.roomRepository.save(updatedRoom);
 		
-		return this.roomMapper.toDto(updatedRoom);
+		return this.roomMapper.toDto(updatedSuccessFullRoom);
 		
 	}
 

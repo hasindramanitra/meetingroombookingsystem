@@ -3,6 +3,11 @@ package com.briano.meeting_room_booking_system.dto;
 
 
 
+import java.util.List;
+import java.util.Set;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import jakarta.validation.constraints.*;
 import lombok.*;
 
@@ -24,5 +29,7 @@ public class RoomDTO {
     // Ensures the value is no more than 299
     @Max(value = 299, message = "Value cannot be greater than 299.")
 	private int capacity;
+	
+	private Set<String> equipmentNames;
 
 }

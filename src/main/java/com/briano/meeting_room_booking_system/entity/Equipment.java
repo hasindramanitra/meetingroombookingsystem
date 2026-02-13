@@ -1,12 +1,17 @@
 package com.briano.meeting_room_booking_system.entity;
 
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Entity(name = "equipments")
+@Entity
+@Table(name = "equipments")
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
@@ -23,5 +28,8 @@ public class Equipment {
 	
 	@Column(nullable = false)
 	private String description;
+	
+	@ManyToMany(mappedBy = "equipments")
+	private Set<Room> rooms = new HashSet<>();
 
 }
