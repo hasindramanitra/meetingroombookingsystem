@@ -25,6 +25,9 @@ public class Room {
 	@Column(nullable = false)
 	private int capacity;
 	
+	@OneToMany(mappedBy = "room", cascade = CascadeType.ALL)
+	private Set<Reservation> reservations = new HashSet<Reservation>();
+	
 	@ManyToMany
 	@JoinTable(name = "room_equipment",
 		joinColumns = @JoinColumn(referencedColumnName = "id"),
